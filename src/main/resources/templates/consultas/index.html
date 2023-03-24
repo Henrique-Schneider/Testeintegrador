@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Consultas</title>
+    <!-- Adicionando o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-3">
+    <h1>Listagem de Consultas</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Data da consulta</th>
+            <th>Paciente</th>
+            <th>Data de Alta</th>
+            <th>Dentista</th>
+            <th>Matrícula</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="consulta : ${consultas}">
+            <td th:text="${#temporals.format(consulta.dataConsulta, 'dd/MM/yyyy')}"></td>
+            <td>
+                <span th:text="${consulta.paciente.nome}"></span>
+                <span th:text="${consulta.paciente.sobrenome}"></span>
+            </td>
+            <td>
+                <span th:text="${#temporals.format(consulta.paciente.dataAlta, 'dd/MM/yyyy')}"></span>
+            </td>
+            <td>
+                <span th:text="${consulta.dentista.nome}"></span>
+                <span th:text="${consulta.dentista.sobrenome}"></span>
+            </td>
+            <td>
+                <span th:text="${consulta.dentista.matricula}"></span>
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" th:href="@{/consultas/{id}(id=${consulta.id})}">Visualizar</a>
+                <a class="btn btn-secondary btn-sm" th:href="@{/consultas/{id}/editar(id=${consulta.id})}">Editar</a>
+                <a class="btn btn-danger btn-sm" th:href="@{/consultas/{id}/excluir(id=${consulta.id})}"
+                   onclick="return confirm('Deseja realmente excluir este paciente?')">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" th:href="@{/consultas/cadastro}">Adicionar Consulta</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi4h1V"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNS4N9p"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
