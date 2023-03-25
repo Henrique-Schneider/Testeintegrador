@@ -147,10 +147,5 @@ public class PacienteDaoImpl implements IDao<Paciente> {
         }
     }
 
-    @Override
-    public Paciente cadastrarConsulta(Integer idDentista, Integer idPaciente, LocalDate dataConsulta) {
-        return null;
-    }
-
 
 }

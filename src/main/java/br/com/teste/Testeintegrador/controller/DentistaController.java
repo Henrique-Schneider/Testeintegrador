@@ -28,6 +28,8 @@ public class DentistaController {
     @GetMapping("/{id}")
     public String detalhesDentista(@PathVariable("id") Integer id, Model model) {
         Dentista dentista = dentistaService.buscarPorId(id);
+        System.out.println("mostra o resultado da pesquisa por id");
+        System.out.println(dentista.getId());
         if (dentista == null) {
             return "redirect:/dentistas";
         }

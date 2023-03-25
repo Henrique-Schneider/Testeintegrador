@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Consulta</title>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
@@ -11,10 +12,10 @@
 <body>
 <div class="container mt-5">
     <h1>Cadastro de Consulta</h1>
-    <form method="post" action="/consultas/cadastro">
+    <form id="formulario"  method="post" action="/consultas/cadastro">
         <div class="form-group">
             <label for="dentista_id">Dentista:</label>
-            <select class="form-control" id="dentista_id" name="dentista_id" required>
+            <select class="form-control" id="dentista_id" name="idDentista" required>
                 <option value="">Selecione um dentista</option>
                 <!-- Loop para popular os dentistas -->
                 <th:block th:each="dentista : ${dentistas}">
@@ -24,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="paciente_id">Paciente:</label>
-            <select class="form-control" id="paciente_id" name="paciente_id" required>
+            <select class="form-control" id="paciente_id" name="idPaciente" required>
                 <option value="">Selecione um paciente</option>
                 <!-- Loop para popular os pacientes -->
                 <th:block th:each="paciente : ${pacientes}">
@@ -35,10 +36,11 @@
         </div>
         <div class="form-group">
             <label for="data_consulta">Data da consulta:</label>
-            <input type="date" class="form-control" id="data_consulta" name="data_consulta" required>
+            <input type="date" class="form-control" id="data_consulta" name="dataConsulta" required>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -52,3 +54,5 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+

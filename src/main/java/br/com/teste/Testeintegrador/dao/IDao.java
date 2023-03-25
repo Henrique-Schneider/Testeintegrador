@@ -9,5 +9,5 @@ public interface IDao<T> {
     T cadastrar(T objeto);
     T editar(T objeto);
     void excluir(Integer id);
-    T cadastrarConsulta(Integer idDentista, Integer idPaciente, LocalDate dataConsulta);
+
 }
